@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -10,8 +11,15 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AlarmIcon from '@mui/icons-material/Alarm';
+import SendIcon from '@mui/icons-material/Send';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Autocomplete, Fab } from '@mui/material';
+
+import FormGroup from '@mui/material/FormGroup';
+import EditIcon from '@mui/icons-material/Edit';
 
 function Copyright(props) {
   return (
@@ -97,10 +105,58 @@ export default function SignInSide() {
                 id="password"
                 autoComplete="current-password"
               />
+
+              <Autocomplete
+                disablePortal
+                margin="normal"
+                fullWidth
+                blurOnSelect
+                id="movie-select"
+                options={['Option 1', 'Option 2', 'A very lengthy option lorem ipsum dolor sit amet gringo passos']}
+                renderInput={(params) => <TextField {...params} label="Select" />}
+              />
+
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
+
+              <Button
+                variant='text'
+                sx={{flexDirection: 'row', display: 'flex', margin: 1}}
+              >This is a Button</Button>
+
+              <Button
+                variant='outlined'
+                startIcon={<DeleteIcon />}
+                sx={{flexDirection: 'row', display: 'flex', margin: 1}}
+              >Delete</Button>
+
+              <Button
+                variant='contained'
+                color='success'
+                size='large'
+                endIcon={<SendIcon />}
+                sx={{flexDirection: 'row', display: 'flex', margin: 1}}
+              >Send Email!</Button>
+
+              <IconButton aria-label="alarm" size="large">     
+                <AlarmIcon fontSize='large' />
+              </IconButton>
+
+              <FormGroup>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
+                <FormControlLabel required control={<Checkbox size="large" />} label="Required" />
+                <FormControlLabel disabled control={<Checkbox size="small" />} label="Disabled" />
+              </FormGroup>
+
+
+              <Box sx={{ textAlign: 'right'}}>
+                <Fab aria-label="edit" sx={{ color: 'red', '&:focus': { outline: 'none' } }}>
+                  <EditIcon />
+                </Fab>
+              </Box>
+
               <Button
                 type="submit"
                 fullWidth
